@@ -1,0 +1,41 @@
+<launch>
+
+  <!-- Remap incoming topics from each IMU and remap converted IMU data to separate topic for each IMU -->
+   <group ns="converted">
+      <remap from = "/j1939_1/imu_accel"   to = "/j1939_1/e3_accel" />
+      <remap from = "/j1939_1/imu_angular" to = "/j1939_1/e3_angular" />
+      <remap from = "/j1939_1/imu_slope"   to = "/j1939_1/e3_slope" /> 
+      <remap from = "/converted/imu_data"  to = "/converted_e3/data_raw" />
+      <node pkg = "j1939_ros_interface" type = "receiver_node.py" name = "receiver_node_e3"/>
+        <param name = "frame_id" value = "base"/>
+
+
+      <remap from = "/j1939_1/imu_accel"   to = "/j1939_1/e4_accel" />
+      <remap from = "/j1939_1/imu_angular" to = "/j1939_1/e4_angular" />
+      <remap from = "/j1939_1/imu_slope"   to = "/j1939_1/e4_slope" /> 
+      <remap from = "/converted/imu_data"  to = "/converted_e4/data_raw" />
+      <node pkg = "j1939_ros_interface" type = "receiver_node.py" name = "receiver_node_e4"/> 
+        <param name = "frame_id" value = "base"/>
+   </group>
+
+  <node pkg = "tf" type = "static_transform_publisher" name = "world_imu_link1" args = "0 0 0 0 0 0 world imu 100" />
+
+  <node pkg = "tf" type = "static_transform_publisher" name = "world_imu_link2" args = "4 0 0 0 0 0 world imu 100" />
+
+  <param name = "robot_description" textfile = "$(find j1939_ros_interface)/description/arm.urdf"/>
+
+  <!-- Launch rviz -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" /> 
+
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+  <!-- <node name="complementary_filter_node" pkg="imu_complementary_filter" type="complementary_filter_node.cpp"/> -->
+
+
+  <node name="tf2_broadcaster_imu" pkg="j1939_ros_interface" type="tf2_broadcaster_imu.py"/>
+
+
+  <node type = "rviz" name = "rviz" pkg = "rviz"  args="-d /home/cat308/bb_ws/src/j1939_ros_interface/config/rviz_config.rviz"/>
+
+</launch>
