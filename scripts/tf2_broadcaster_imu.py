@@ -15,7 +15,7 @@ def handle_imu_pose(msg):
 
     t.header.stamp = rospy.Time.now()
     t.header.frame_id = "base"
-    t.child_frame_id = "imu"
+    t.child_frame_id = imuname
     t.transform.translation.x = 0
     t.transform.translation.y = 0
     t.transform.translation.z = 0
@@ -28,5 +28,6 @@ def handle_imu_pose(msg):
 
 if __name__ == '__main__':
     rospy.init_node('tf2_broadcaster_imu')
-    rospy.Subscriber('/converted_e3/data_raw', Imu, handle_imu_pose)                                                    
+    imuname = rospy.get_param('~imu')
+    rospy.Subscriber('/%s/data_raw', Imu, handle_imu_pose)                                                    
     rospy.spin()

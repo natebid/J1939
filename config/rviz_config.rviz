@@ -10,7 +10,6 @@ Panels:
         - /Imu1
         - /Imu2
         - /RobotModel1
-        - /RobotModel1/Links1
         - /Imu3
         - /Imu3/Box properties1
         - /Imu3/Axes properties1
@@ -63,7 +62,7 @@ Visualization Manager:
         Z: 0
       Plane: XY
       Plane Cell Count: 10
-      Reference Frame: imu
+      Reference Frame: <Fixed Frame>
       Value: true
     - Alpha: 0.699999988079071
       Class: rviz_plugin_tutorials/Imu
@@ -86,18 +85,43 @@ Visualization Manager:
     - Alpha: 0.5
       Class: rviz/RobotModel
       Collision Enabled: false
-      Enabled: false
+      Enabled: true
       Links:
         All Links Enabled: true
         Expand Joint Details: false
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
+        base:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        imu:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        link1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        link2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        link3:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
       Name: RobotModel
       Robot Description: robot_description
       TF Prefix: ""
       Update Interval: 0
-      Value: false
+      Value: true
       Visual Enabled: true
     - Acceleration properties:
         Acc. vector alpha: 1
@@ -149,7 +173,7 @@ Visualization Manager:
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: base
+    Fixed Frame: world
     Frame Rate: 30
   Name: root
   Tools:
@@ -173,7 +197,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 32.034149169921875
+      Distance: 27.63399887084961
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -188,10 +212,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.6497979760169983
+      Pitch: 0.4047969579696655
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 1.3003970384597778
+      Yaw: 1.5403963327407837
     Saved: ~
 Window Geometry:
   Displays:
