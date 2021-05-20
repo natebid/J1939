@@ -1,0 +1,7 @@
+string topic
+string frame
+J1939Filter[] filters
+---
+int32 SUCCESS=0
+int32 FAILURE=-1
+int32 result

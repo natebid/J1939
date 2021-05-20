@@ -1,0 +1,11 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/cat308/bb_ws/devel/lib/python2.7/dist-packages",
+        "/opt/ros/melodic/lib/python2.7/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/cat308/bb_ws/devel/lib/python2.7/dist-packages",
+        "/opt/ros/melodic/lib/python2.7/dist-packages"
+    ],
+    "cmake.configureOnOpen": false
+}
