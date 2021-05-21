@@ -7,7 +7,7 @@
       <remap from = "/j1939_1/imu_slope"   to = "/j1939_1/e3_slope" /> 
       <remap from = "/converted/imu_data"  to = "/converted_e3/data_raw" />
       <node pkg = "j1939_ros_interface" type = "receiver_node.py" name = "receiver_node_e3"/>
-        <param name = "frame_id" value = "base"/>
+        <param name = "frame_id" value = "imu1"/>
 
 
       <remap from = "/j1939_1/imu_accel"   to = "/j1939_1/e4_accel" />
@@ -15,12 +15,12 @@
       <remap from = "/j1939_1/imu_slope"   to = "/j1939_1/e4_slope" /> 
       <remap from = "/converted/imu_data"  to = "/converted_e4/data_raw" />
       <node pkg = "j1939_ros_interface" type = "receiver_node.py" name = "receiver_node_e4"/> 
-        <param name = "frame_id" value = "base"/>
+        <param name = "frame_id" value = "imu2"/>
    </group>
 
-  <node pkg = "tf2_ros" type = "static_transform_publisher" name = "world_base_link1" args = "0 0 0 0 0 0 world base" />
+  <node pkg = "tf2_ros" type = "static_transform_publisher" name = "base_imu1" args = "0 .25 0 0 0 0 base imu1" />
 
-  <!-- <node pkg = "tf2_ros" type = "static_transform_publisher" name = "world_imu_link2" args = "4 0 0 0 0 0 world imu 100" /> -->
+  <node pkg = "tf2_ros" type = "static_transform_publisher" name = "link1_imu2" args = "0 .5 0 0 0 0 link1 imu2 " />
 
   <param name = "robot_description" textfile = "$(find j1939_ros_interface)/description/arm.urdf"/>
 
