@@ -7,7 +7,7 @@
 		  <origin rpy="0 0 0" xyz="0 0 1"/>
 		</visual>
 	</link>
-    <link name="imu">
+    <link name="imu1">
         <visual>
             <geometry>
                 <box size=" 0.5 0.5 0.5"/>
@@ -39,18 +39,24 @@
 		  <origin rpy="0 0 0" xyz="0 0 1.5"/>
 		</visual>
 	</link>
-    <joint name="joint_imu" type="fixed">
+    <joint name="joint_imu1" type="fixed">
         <parent link="base"/>
-        <child link="imu"/>
-        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <child link="imu1"/>
+        <origin rpy="0 0 0" xyz="0 0 1"/>
 		<axis xyz="1 0 0" />
     </joint>
-	<joint name="joint0" type="continuous">
+    <joint name="joint0" type="continuous">
 		<parent link="base"/>
 		<child link="link1"/>
 		<origin rpy="0 0 0" xyz="0 0 2"/>
 		<axis xyz="1 0 0" />
-	</joint>
+    </joint>
+    <joint name="joint_imu2" type="fixed">
+        <parent link="link1"/>
+        <child link="imu2"/>
+        <origin rpy="0 0 0" xyz="0 0 1.5"/>
+ 		<axis xyz="1 0 0" />
+    </joint>
 	<joint name="joint1" type="continuous">
 		<parent link="link1"/>
 		<child link="link2"/>
